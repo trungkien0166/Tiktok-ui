@@ -1,9 +1,10 @@
 import './App.css';
+import Content from './Content';
 
 function App() {
   return (
     <div className="App">
-      xin chào
+      <Content />   mình là Trung Kiên
     </div>
   );
 }
