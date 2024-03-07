@@ -1,13 +1,8 @@
-import './App.css';
-import Content from './Content';
-import Button from '~/components/Button';
 function App() {
   return (
     <div className="App">
-      <Button />
-      <Content />   mình là Trung Kiên
+      <h1>React App</h1>
     </div>
   );
 }
-
 export default App;
