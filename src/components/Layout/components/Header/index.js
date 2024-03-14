@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '~/components/Layout/Popper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 const cx = classNames.bind(styles)
 function Header() {
     const [searchResult, setSearchResult] = useState([])
@@ -53,6 +54,10 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('action')}>
+                    <Button text >Upload</Button>
+                    {/* disabled onClick={() => alert('clicked!')} */}
+                    {/* <Button primary >Log in</Button> */}
+                    <Button primary>Log in</Button>
                 </div>
             </div>
         </header >
