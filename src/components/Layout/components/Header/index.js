@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
-import { useEffect, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import styles from './Header.module.scss';
@@ -14,9 +14,55 @@ import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles)
 const MENU_ITEMS = [
+
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
-        title: 'English'
+        title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'Language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Tiếng Việt ',
+                    children: {
+                        title: 'Language',
+                        data: [
+                            {
+                                code: 'en1',
+                                title: 'English1',
+                            },
+                            {
+                                code: 'vi 1',
+                                title: 'Tiếng Việt 1',
+                                children2: {
+                                    title: 'Language',
+                                    data: [
+                                        {
+                                            code: 'en2',
+                                            title: 'English2',
+                                        },
+                                        {
+                                            code: 'vi 2',
+                                            title: 'Tiếng Việt 2',
+                                        },
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+
+
+                }
+
+            ]
+        }
+
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -35,6 +81,15 @@ function Header() {
             setSearchResult([])
         }, 0);
     }, [])
+    //handle logic
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+                // handle change language
+                break;
+            default:
+        }
+    }
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -73,7 +128,7 @@ function Header() {
                     <Button text>Upload</Button>
                     <Button primary>Log in</Button>
 
-                    <Menu items={MENU_ITEMS} >
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange} >
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
